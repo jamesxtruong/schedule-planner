@@ -24,8 +24,8 @@ class event 	// Abstract base class
 		event(const string & t, const string & d, const string & l); // Parameterized constructor
 		//~event();
 		virtual int add_event() = 0;
-		virtual int edit_event() = 0;
-		virtual int display_event() = 0;
+		virtual int edit_event(const string & t) = 0;
+		virtual int display_event(const string & t) = 0;
 		virtual int delete_event(const string & name) = 0;
 		friend ostream & operator << (ostream & cout, const event & src); // Output
 	//private:
