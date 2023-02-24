@@ -7,6 +7,7 @@
 #include <iomanip>
 
 using std::ostream;
+using namespace std;
 
 // James Truong		CS302		2-22-2023
 // Program #3		Shedule Planner
@@ -21,13 +22,14 @@ The derived classes may have unique methods and members. */
 class event 	// Abstract base class
 {
 	public:
+		event();		// Default constructor
 		event(const string & t, const string & d, const string & l); // Parameterized constructor
-		//~event();
+		//virtual ~event();
 		virtual int add_event() = 0;
 		virtual int edit_event(const string & t) = 0;
 		virtual int display_event(const string & t) = 0;
 		virtual int delete_event(const string & name) = 0;
-		friend ostream & operator << (ostream & cout, const event & src); // Output
+		friend ostream & operator << (ostream & cout, const event & op2); // Output
 	//private:
 	protected:
 		string title;		// Name of event
@@ -38,14 +40,14 @@ class event 	// Abstract base class
 class meeting : public event		// Derived class meeting is an event
 {
 	public:
-		meeting();
-		meeting(const string & t, const string & d, const string & l); // Parameterized constructor
-		~meeting();
+		meeting();		// Default constructor
+		meeting(const string & t, const string & d, const string & l, const string & a_topic); // Parameterized constructor
+		~meeting();		// Destructor
 		int add_event();
 		int edit_event(const string & t);
 		int display_event(const string & t);
 		int delete_event(const string & name);
-		friend ostream & operator << (ostream & cout, const meeting & src);
+		friend ostream & operator << (ostream & cout, const meeting & op2);
 	private:
 		string topic;		// Topic / agenda for meeting
 };
@@ -53,16 +55,17 @@ class meeting : public event		// Derived class meeting is an event
 class workshop : public event		// Derived class workshop is an event
 {
 	public:
-		workshop();
-		workshop(const string & t, const string & d, const string & l); // Parameterized constructor
-		~workshop();
+		workshop();		// Default constructor
+		workshop(const string & t, const string & d, const string & l, const int & capacity, 
+			const string & a_instructor); // Parameterized constructor
+		~workshop();		// Destructor
 		int add_event();
 		int edit_event(const string & t);
 		int display_event(const string & t);
 		int delete_event(const string & name);
 		int change_capacity(const int & num);
 		int change_instructor(const string & replace);
-		friend ostream & operator << (ostream & cout, const workshop & src);	// Output
+		friend ostream & operator << (ostream & cout, const workshop & op2);	// Output
 	private:
 		int capacity;		// Limited spots for workshop
 		string instructor;	// Instructor or speaker name
@@ -71,17 +74,18 @@ class workshop : public event		// Derived class workshop is an event
 class convention : public event		// Derived class convention is an event
 {
 	public:
-		convention();
-		convention(const string & t, const string & d, const string & l); // Parameterized constructor
-		~convention();
+		convention();		// Default constructor
+		convention(const string & t, const string & d, const string & l, const float & price,
+			const string & company); // Parameterized constructor
+		~convention();		// Destructor
 		int add_event();
 		int edit_event(const string & t);
 		int display_event(const string & t);
 		int delete_event(const string & name);
-		friend ostream & operator << (ostream & cout, const convention & src); // Output
+		friend ostream & operator << (ostream & cout, const convention & op2); // Output
 	private:
 		float admission;	// Admission pricing for event
-		string sponser;		// Convention sponser
+		string sponsor;		// Convention sponser
 };
 /*
 class node
