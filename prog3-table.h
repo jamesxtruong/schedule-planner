@@ -1,5 +1,4 @@
 //prog3-table.h
-
 #include "prog3-schedule.h"
 #include <memory>
 #include <list>

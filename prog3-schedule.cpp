@@ -1,5 +1,4 @@
 //prog3-schedule.cpp
-
 #include "prog3-schedule.h"
 
 //using namespace std;
@@ -36,19 +35,29 @@ meeting::meeting() : topic("") {}
 meeting::meeting(const string & t, const string & d, const string & l, const string & a_topic) : 
 	event(t, d, l), topic(a_topic) {}
 // Destructor
-meeting::~meeting() {}
+meeting::~meeting() 
+{
+	title.clear();
+	date.clear();
+	location.clear();
+	topic.clear();
+}
 // Add a meeting event
 int meeting::add_event() 
 {
 	string t, d, l, a_topic;
 	cout << "Enter name of meeting: ";
 	getline(cin, t);
+	//cin.ignore(100, '\n');
 	cout << "Enter date of meeting: ";
 	getline(cin, d);
+	//cin.ignore(100, '\n');
 	cout << "Enter location of meeting: ";
 	getline(cin, l);
+	//cin.ignore(100, '\n');
 	cout << "Enter topic for meeting: ";
 	getline(cin, a_topic);
+	//cin.ignore(100, '\n');
 
 	title = t;
 	date = d;
@@ -65,7 +74,7 @@ int meeting::edit_event(const string & t)
 	return 0;
 }
 // Display a meeting event
-int meeting::display_event(const string & t) 
+/*int meeting::display_event(const string & t) 
 {
 	if(title == t)
 	{
@@ -73,6 +82,17 @@ int meeting::display_event(const string & t)
 		return 1;
 	}
 	return 0;
+} */
+void meeting::display_event() const
+{
+	if(!title.empty())
+	{
+		cout << *this;
+		//return 1;
+		return;
+	}
+	//return 0;
+	return;
 }
 // Delete a meeting event
 int meeting::delete_event(const string & name) 
@@ -104,7 +124,14 @@ workshop::workshop() : capacity(0), instructor("") {}
 workshop::workshop(const string & t, const string & d, const string & l, const int & cap, const string & a_instructor) :
 	event(t, d, l), capacity(cap), instructor(a_instructor) {}
 // Destructor
-workshop::~workshop() {}
+workshop::~workshop() 
+{
+	title.clear();
+	date.clear();
+	location.clear();
+	capacity = 0;
+	instructor.clear();
+}
 // Add a workshop event
 int workshop::add_event()
 {
@@ -112,14 +139,18 @@ int workshop::add_event()
 	int cap = 0;
 	cout << "Enter name of workshop: ";
 	getline(cin, t);
+	//cin.ignore(100, '\n');
 	cout << "Enter date of workshop: ";
 	getline(cin, d);
+	//cin.ignore(100, '\n');
 	cout << "Enter location of workshop: ";
 	getline(cin, l);
+	//cin.ignore(100, '\n');
 	cout << "Enter workshop seating capacity: ";
 	cin >> cap;
 	cout << "Enter name of workshop instructor: ";
 	getline(cin , inst);
+	//cin.ignore(100, '\n');
 
 	title = t;
 	date = d;
@@ -137,7 +168,7 @@ int workshop::edit_event(const string & t)
 	return 0;
 }
 // Display a workshop event
-int workshop::display_event(const string & t)
+/*int workshop::display_event(const string & t)
 {
 	if(title == t)
 	{
@@ -145,6 +176,17 @@ int workshop::display_event(const string & t)
 		return 1;
 	}
 	return 0;
+} */
+void workshop::display_event() const
+{
+	if(!title.empty())
+	{
+		cout << *this;
+		//return 1;
+		return;
+	}
+	//return 0;
+	return;
 }
 // Delete a meeting event
 int workshop::delete_event(const string & name) 
@@ -188,7 +230,14 @@ convention::convention() : admission(0.00), sponsor("") {}
 convention::convention(const string & t, const string & d, const string & l, const float & price, const string & company) :
 	event(t, d, l), admission(price), sponsor(company) {}
 // Destructor
-convention::~convention() {}
+convention::~convention() 
+{
+	title.clear();
+	date.clear();
+	location.clear();
+	admission = 0.00;
+	sponsor.clear();
+}
 // Add a convention event
 int convention::add_event()
 {
@@ -196,14 +245,18 @@ int convention::add_event()
 	float price = 0.00;
 	cout << "Enter name of convention: ";
 	getline(cin, t);
+	//cin.ignore(100, '\n');
 	cout << "Enter date of convention: ";
 	getline(cin, d);
+	//cin.ignore(100, '\n');
 	cout << "Enter location of convention: ";
 	getline(cin, l);
+	//cin.ignore(100, '\n');
 	cout << "Enter convention admission price: ";
 	cin >> price;
 	cout << "Enter name of convention sponsor: ";
 	getline(cin, company);
+	//cin.ignore(100, '\n');
 
 	title = t;
 	date = d;
@@ -221,7 +274,7 @@ int convention::edit_event(const string & t)
 	return 0;
 }
 // Display a convention event
-int convention::display_event(const string & t)
+/*int convention::display_event(const string & t)
 {
 	if(title == t)
 	{
@@ -229,6 +282,17 @@ int convention::display_event(const string & t)
 		return 1;
 	}
 	return 0;
+}*/
+void convention::display_event() const
+{
+	if(!title.empty())
+	{
+		cout << *this;
+		//return 1;
+		return;
+	}
+	//return 0;
+	return;
 }
 // Delete a convention event
 int convention::delete_event(const string & name)

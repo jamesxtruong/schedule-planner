@@ -1,12 +1,9 @@
 //prog3-schedule.h
-
 #include <iostream>
 #include <cstring>
 #include <cctype>
 #include <string>
 #include <iomanip>
-//#include <list>
-//#include <memory>
 
 using std::ostream;
 using namespace std;
@@ -29,7 +26,8 @@ class event 	// Abstract base class
 		virtual ~event();
 		virtual int add_event() = 0;
 		virtual int edit_event(const string & t) = 0;
-		virtual int display_event(const string & t) = 0;
+		//virtual int display_event(const string & t) = 0;
+		virtual void display_event() const = 0;
 		virtual int delete_event(const string & name) = 0;
 		friend ostream & operator << (ostream & cout, const event & op2); // Output
 	//private:
@@ -43,11 +41,13 @@ class meeting : public event		// Derived class meeting is an event
 {
 	public:
 		meeting();		// Default constructor
-		meeting(const string & t, const string & d, const string & l, const string & a_topic); // Parameterized constructor
+		meeting(const string & t, const string & d, const string & l, const string & a_topic); 
+					// Parameterized constructor
 		~meeting();		// Destructor
 		int add_event();
 		int edit_event(const string & t);
-		int display_event(const string & t);
+		//int display_event(const string & t);
+		void display_event() const;
 		int delete_event(const string & name);
 		friend ostream & operator << (ostream & cout, const meeting & op2);
 	private:
@@ -63,7 +63,8 @@ class workshop : public event		// Derived class workshop is an event
 		~workshop();		// Destructor
 		int add_event();
 		int edit_event(const string & t);
-		int display_event(const string & t);
+		//int display_event(const string & t);
+		void display_event() const;
 		int delete_event(const string & name);
 		int change_capacity(const int & num);
 		int change_instructor(const string & replace);
@@ -82,7 +83,8 @@ class convention : public event		// Derived class convention is an event
 		~convention();		// Destructor
 		int add_event();
 		int edit_event(const string & t);
-		int display_event(const string & t);
+		//int display_event(const string & t);
+		void display_event() const;
 		int delete_event(const string & name);
 		friend ostream & operator << (ostream & cout, const convention & op2); // Output
 	private:

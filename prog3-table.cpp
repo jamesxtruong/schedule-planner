@@ -1,7 +1,5 @@
 //prog3-table.cpp
-
 #include "prog3-table.h"
-
 
 // James Truong		CS302		3-3-2023
 // Program #3		Schedule Planner 
