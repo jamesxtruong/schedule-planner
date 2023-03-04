@@ -4,12 +4,14 @@
 
 //using namespace std;
 
-// James Truong		CS302		2-24-2023
+// James Truong		CS302		3-3-2023
 // Program #3		Schedule Planner 
 
 /* This is the file that implements the member functions for the schedule.h
 file containing the abstract base class event and it's derived classes (meeting, 
 workshop, convention)*/
+
+// Functions:
 
 // Abstract base class
 // Default constructor
@@ -18,7 +20,7 @@ event::event() : title(""), date(""), location("") {}
 event::event(const string & t, const string & d, const string & l) : 
 	title(t), date(d), location(l) {}
 // Destructor
-//event::~event() {}
+event::~event() {}
 // Overloaded output (display) for event title, date, location
 ostream & operator << (ostream & cout, const event & op2)
 {

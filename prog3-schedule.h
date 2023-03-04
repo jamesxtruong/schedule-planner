@@ -5,11 +5,13 @@
 #include <cctype>
 #include <string>
 #include <iomanip>
+//#include <list>
+//#include <memory>
 
 using std::ostream;
 using namespace std;
 
-// James Truong		CS302		2-22-2023
+// James Truong		CS302		3-3-2023
 // Program #3		Shedule Planner
 
 /* This is the header file that will contain the clas interfaces. The base class is 
@@ -24,7 +26,7 @@ class event 	// Abstract base class
 	public:
 		event();		// Default constructor
 		event(const string & t, const string & d, const string & l); // Parameterized constructor
-		//virtual ~event();
+		virtual ~event();
 		virtual int add_event() = 0;
 		virtual int edit_event(const string & t) = 0;
 		virtual int display_event(const string & t) = 0;
@@ -87,12 +89,4 @@ class convention : public event		// Derived class convention is an event
 		float admission;	// Admission pricing for event
 		string sponsor;		// Convention sponser
 };
-/*
-class node
-{
-	public:
-		node();
-		~node();
-	private:
-		event * ptr;	
-}; */
+
