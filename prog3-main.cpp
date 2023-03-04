@@ -38,11 +38,11 @@ int main()
 				if(next_choice == 1)
 				{
 					cout << "SELECTED: (1) Add Meeting \n";
-					meeting a_meeting;
-					event * ptr = &a_meeting;
+					//meeting a_meeting;
+					//event * ptr = &a_meeting;
+					event * ptr = new meeting;
 					if(ptr->add_event())
 						ptr->display_event();
-					//ptr = new meeting;
 					if(ptr)
 						delete ptr;
 					ptr = nullptr;
@@ -50,8 +50,9 @@ int main()
 				else if(next_choice == 2)
 				{
 					cout << "SELECTED: (2) Add Workshop \n";
-					workshop a_workshop;
-					event * ptr = &a_workshop;
+					//workshop a_workshop;
+					//event * ptr = &a_workshop;
+					event * ptr = new workshop;
 					if(ptr->add_event())
 						ptr->display_event();
 					if(ptr)
@@ -61,8 +62,9 @@ int main()
 				else if(next_choice == 3)
 				{
 					cout << "SELECTED: (3) Add Convention \n";
-					convention a_convention;
-					event * ptr = &a_convention;
+					//convention a_convention;
+					//event * ptr = &a_convention;
+					event * ptr =  new convention;
 					if(ptr->add_event())
 						ptr->display_event();
 					if(ptr)
