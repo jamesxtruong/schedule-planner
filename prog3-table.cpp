@@ -67,6 +67,7 @@ int table::insert(unique_ptr<event> & ptr)
 {
 }
 // Function to display an event in the table (BST)
+/*
 int table::display() const
 {
 }
@@ -79,9 +80,9 @@ int table::display_all() const
 {
 }
 // Recursive display all events stored
-int table::display_all() const
+//int table::display_all() const
 {
-}
+} */
 // Function to edit an event 
 //int table::edit() {}
 // Recursive function to traverse to find event to edit

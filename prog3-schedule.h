@@ -11,10 +11,11 @@ using namespace std;
 // James Truong		CS302		3-8-2023
 // Program #3		Shedule Planner
 
-/* This is the header file that will contain the clas interfaces. The base class is 
+/* This is the header file that will contain the class interfaces. The base class is 
 an event, it is an abstract base class. The derived classes are different events, 
-the base class will contain virtual function to use specfic derived class methods. 
-The derived classes may have unique methods and members. */
+the base class will contain virtual functions (methods) to use specfic derived class methods
+at run time. The derived classes may have unique methods and members that are not virtual in the 
+abstract base class such as the method for workshop to change capacity and instructor. */
 
 // Class Interface(s):
 
