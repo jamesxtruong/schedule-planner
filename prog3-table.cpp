@@ -1,7 +1,7 @@
 //prog3-table.cpp
 #include "prog3-table.h"
 
-// James Truong		CS302		3-3-2023
+// James Truong		CS302		3-8-2023
 // Program #3		Schedule Planner 
 
 /* This is the file that implements the member functions for the table.h
@@ -16,19 +16,21 @@ node::node() : /*ptr(nullptr),*/ left(nullptr), right(nullptr) {}
 // Destructor 
 node::~node()
 {
-	/*if(ptr)
+	/*if(ptr)		// Raw pointer
 		delete ptr;
 	ptr = nullptr; */
 }
 // Get left node
-unique_ptr<node> node::get_left()
+unique_ptr<node> & node::get_left()
 {
-	return move(left);
+	//return move(left);
+	return left;
 }
 // Get right node
-unique_ptr<node> node::get_right()
+unique_ptr<node> & node::get_right()
 {
-	return move(right);
+	//return move(right);
+	return right;
 }
 // Check for left node
 bool node::has_left() const
@@ -40,12 +42,58 @@ bool node::has_right() const
 {
 	return right != nullptr;
 }
+// Greater than or equal to check
+bool greater_equal(const string & compare) const
+{
+	if(compare.empty)	// Check for title to compare
+		throw invalid_argument("Event title missing.")
+	return my_events.front()->get_title() >= compare;
+}
+// Less than check 
+bool less_than(const string & compare) const
+{
+	if(compare.empty)
+		throw invalid_argument("Event title missing.")
+	return my_events.front()->get_title() < compare;
+}
 
 // Table (BST) class
 // Default constructor
 table::table() : root(nullptr) {}
 // Destructor 
-table::~table()
+table::~table() {}
+// Function to insert an event to the table (BST)
+int table::insert(unique_ptr<event> & ptr)
 {
 }
+// Function to display an event in the table (BST)
+int table::display() const
+{
+}
+// Recursive display single event 
+int table::display() const
+{
+}
+// Function to display all events in the table (BST) in order of sort (alphabet)
+int table::display_all() const
+{
+}
+// Recursive display all events stored
+int table::display_all() const
+{
+}
+// Function to edit an event 
+//int table::edit() {}
+// Recursive function to traverse to find event to edit
+//int table::edit() {}
+
+// Function to remove an event in the table (BST)
+//int table::remove() {}
+// Recursive function to remove event in the table (BST)
+//int table::remove() {}
+
+// Function to remove all events in table (BST)
+//int table::remove_all() {}
+// Recursive function to remove all events int he table (BST)
+//int table::remove_all() {}
 

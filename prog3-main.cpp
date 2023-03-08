@@ -1,7 +1,7 @@
 //prog3-main.cpp
 #include "prog3-table.h"
 
-// James Truong		CS302		3-3-2023
+// James Truong		CS302		3-8-2023
 // Program #3		Schedule Planner 
 
 /* This is the client test program where the application can 
@@ -21,17 +21,19 @@ int main()
 		cout << "Schedule Planner Menu: \n";
 		cout << "(1) Add Event \t\t (2) Edit Event \t (3) Delete Event \n";
 		cout << "(4) Display Event \t (0) Exit Program\n";
+		cout << "Select a menu option: ";
 		cin >>  choice;
 		cin.ignore(100, '\n');
 		
 		if(choice == 1)
 		{
-			cout << "SELECTED: (1) Add Event \n";
+			cout << "SELECTED: (1) Add Event ";
 			do
 			{
-				cout << "Add Event Menu: \n";
+				cout << "\nAdd Event Menu: \n";
 				cout << "(1) Add Meeting \t (2) Add Workshop \t (3) Add Convention\n";
 				cout << "(0) Back \t";
+				cout << "Select an option: ";
 				cin >> next_choice;
 				cin.ignore(100, '\n');
 

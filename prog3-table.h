@@ -3,7 +3,7 @@
 #include <memory>
 #include <list>
 
-// James Truong		CS302		3-3-2023
+// James Truong		CS302		3-8-2023
 // Program #3		Schedule Planner
 
 /* This is the header file to implement a table. This table is a BST
@@ -17,8 +17,8 @@ class node				// Tree node of events
 	public:
 		node();				// Default constructor
 		~node();			// Destructor
-		unique_ptr<node> get_left();	// Return pointer to left node
-		unique_ptr<node> get_right();	// Return pointer to right node
+		unique_ptr<node> & get_left();	// Return pointer to left node
+		unique_ptr<node> & get_right();	// Return pointer to right node
 		bool has_left() const;		// Check for left node
 		bool has_right() const;		// Check for right node
 
