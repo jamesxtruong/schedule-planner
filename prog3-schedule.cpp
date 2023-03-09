@@ -92,6 +92,8 @@ void meeting::display_event() const
 {
 	if(!title.empty())	// Check if meeting has title name
 	{
+		cout << left << setw(50) << "Meeting title:" << setw(15) << "Meeting date:" << setw(15) 
+		<< "Meeting location:" << setw(15) << "Meeting topic:" << endl;
 		cout << *this;	// Overloaded output op
 		//return 1;
 		return;

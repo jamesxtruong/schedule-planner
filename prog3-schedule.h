@@ -18,7 +18,6 @@ at run time. The derived classes may have unique methods and members that are no
 abstract base class such as the method for workshop to change capacity and instructor. */
 
 // Class Interface(s):
-
 class event 	// Abstract base class event, virtual self-similar interface methods
 {
 	public:
@@ -33,7 +32,6 @@ class event 	// Abstract base class event, virtual self-similar interface method
 		virtual int delete_event(const string & name) = 0;	// Virtual method to delete an event
 		string get_title() const; 			// Method to return the string title of event
 		friend ostream & operator << (ostream & cout, const event & op2); // Output
-	//private:
 	protected:
 		string title;		// Name of event
 		string date;		// Date of event

@@ -7,7 +7,7 @@
 /* This is the header file to implement a menu class interface. 
 This interface will give the client the ability to manage and access
 the events for the schedule. Events can be added, removed, changed, and
-displayed. */
+displayed until the client decides to quit/exit. */
 
 class menu	// Menu class interface
 {
@@ -15,6 +15,10 @@ class menu	// Menu class interface
 		menu();			  // Default constructor
 		~menu();		  // Destructor 
 		int menu_interface();	  // The client main menu interface
+		int add_interface();	  // Add event interface
+		int edit_interface();	  // Edit event interface
+		int delete_interface();	  // Delete event interface
+		int display_interface();  // Display event interface
 		void welcome_msg() const; // Display welcome message 
 		void exit_msg() const; 	  // Display exit message
 		// Functions

@@ -23,7 +23,5 @@ int main()
 
 	} while(select != 0); 	// 0 option interface select to exit
 	
-	my_menu.exit_msg();	// Menu exit message call
-
 	return 0;
 }
