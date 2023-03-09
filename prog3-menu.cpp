@@ -85,9 +85,26 @@ int menu::delete_interface()
 	{
 		delete_menu();		// Display the delete event menu options
 		select = valid_opt2();	// Get valid event menu options (0-2)
-
-		/*if(select == 1)
-		else if(select == 2) */
+		
+		//if(select == 1)
+		if(select == 2)
+		{
+			cout << "\nSELECTED: (2) Remove all events \n";
+			try
+			{
+				bool removed = my_table.remove_all();	// Call to remove all
+				if(!removed)	// Throw exception, table was empty (schedule)
+					throw invalid_argument("Nothing to remove.");
+				else
+					cout << "All events removed! \n";
+			}
+			catch(const invalid_argument & err) // Catch exception
+			{
+				cerr << err.what() << endl;
+				continue;
+			}
+		}
+		/*else if(select == 2) */
 
 	} while(select != 0);	// Loop until (0) is selected
 	return select;	// Return the exit option
@@ -103,9 +120,10 @@ int menu::display_interface()
 
 		//cout << "Enter event title to display: ";
 
-		if(select == 1) // Display all events
+		//if(select == 1)
+		if(select == 2) // Display all events
 		{
-			cout << "\nDisplaying all events: \n";
+			cout << "\nSELECTED: (2) Displaying all events: \n";
 			try
 			{
 				int num = my_table.display_all(); // Call display all table
@@ -182,11 +200,22 @@ int menu::valid_opt2()
 				throw out_of_range("Input was not in valid range. Enter 1, 2, or 0.");
 			cin.ignore(100, '\n');
 		}
-		catch(const exception & err)
+		catch(const out_of_range & outr) // Invalid int
 		{
-			cerr << err.what() << endl; 	// Display error message A
+			cerr << outr.what() << endl; 	// Display error message
+			continue;			// Go back to get valid input
+		}
+		catch(const exception & err)	// Catch non int
+		{
+			cerr << err.what() << endl; 	// Display error message 
+			temp = 5;
 			continue;			// Go back to get valid input 
 		}	
+		catch(...)			// Any other exception
+		{
+			cerr << "Invalid input. " << endl;
+			continue;
+		}
 	} while(temp != 0 && temp != 1 && temp != 2); // Check for valid int options
 
 	return temp;	// Return the valid int 
@@ -212,11 +241,22 @@ int menu::valid_opt3()
 				throw out_of_range("Input was not in valid range. Enter 1, 2, 3, or 0.");
 			cin.ignore(100, '\n');
 		}
-		catch(const exception & err)
+		catch(const out_of_range & outr) // Invalid int
 		{
-			cerr << err.what() << endl; 	// Display error message A
+			cerr << outr.what() << endl; 	// Display error message
+			continue;			// Go back to get valid input
+		}
+		catch(const exception & err)	// Catch non int
+		{
+			cerr << err.what() << endl; 	// Display error message 
+			temp = 5;
 			continue;			// Go back to get valid input 
 		}	
+		catch(...)			// Any other exception
+		{
+			cerr << "Invalid input. " << endl;
+			continue;
+		}
 	} while(temp != 0 && temp != 1 && temp != 2 && temp != 3); // Check for valid int options
 
 	return temp;	// Return the valid int 
@@ -242,11 +282,22 @@ int menu::valid_opt4()
 				throw out_of_range("Input was not in valid range. Enter 1, 2, 3, 4, or 0.");
 			cin.ignore(100, '\n');
 		}
-		catch(const exception & err)
+		catch(const out_of_range & outr) // Invalid int
 		{
-			cerr << err.what() << endl; 	// Display error message A
+			cerr << outr.what() << endl; 	// Display error message
+			continue;			// Go back to get valid input
+		}
+		catch(const exception & err)	// Catch non int
+		{
+			cerr << err.what() << endl; 	// Display error message 
+			temp = 5;
 			continue;			// Go back to get valid input 
 		}	
+		catch(...)			// Any other exception
+		{
+			cerr << "Invalid input. " << endl;
+			continue;
+		}
 	} while(temp != 0 && temp != 1 && temp != 2 && temp != 3 && temp != 4); 
 	// Check for valid int options
 
@@ -277,13 +328,13 @@ void menu::edit_menu() const
 void menu::delete_menu() const
 {
 	cout << "\nDelete Event Menu: \n";
-	cout << "(1) Delete An Event \t (2) Delete All \t (0) Back \n";
+	cout << "(_) Delete An Event \t (2) Delete All \t (0) Back \n";
 }
 // Function to display event display menu options 
 void menu::display_menu() const
 {
 	cout << "\nDisplay Event Menu: \n";
-	cout << "(_) Display An Event \t (1) Display All \t (0) Back \n";
+	cout << "(_) Display An Event \t (2) Display All \t (0) Back \n";
 }
 // Function to display welcome message
 void menu::welcome_msg() const

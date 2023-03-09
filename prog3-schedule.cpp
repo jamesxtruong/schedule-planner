@@ -28,7 +28,7 @@ string event::get_title() const
 // Overloaded output (display) for event title, date, location
 ostream & operator << (ostream & cout, const event & op2)
 {
-	cout << left << setw(50) << op2.title << setw(15) << op2.date << setw(15) 
+	cout << left << setw(35) << op2.title << setw(20) << op2.date << setw(20) 
 		<< op2.location;
 	return cout;
 }
@@ -92,9 +92,9 @@ void meeting::display_event() const
 {
 	if(!title.empty())	// Check if meeting has title name
 	{
-		cout << left << setw(50) << "Meeting title:" << setw(15) << "Meeting date:" << setw(15) 
-		<< "Meeting location:" << setw(15) << "Meeting topic:" << endl;
-		cout << *this;	// Overloaded output op
+		cout << left << setw(35) << "Meeting title:" << setw(20) << "Meeting date:" << setw(20) 
+		<< "Location:" << setw(20) << "Topic:" << endl;
+		cout << *this << endl;	// Overloaded output op
 		//return 1;
 		return;
 	}
@@ -124,7 +124,7 @@ int meeting::delete_event(const string & name)
 ostream & operator << (ostream & cout, const meeting & op2)
 {
 	cout << static_cast<const event &>(op2);	// Call abc << first
-	cout << left << setw(15) << op2.topic;		// Output meeting member (topic)
+	cout << left << setw(20) << op2.topic;		// Output meeting member (topic)
 	return cout;
 }
 
@@ -194,7 +194,10 @@ void workshop::display_event() const
 {
 	if(!title.empty())	// Check if workshop has title/name
 	{
-		cout << *this;	// Overloaded output op
+		cout << left << setw(35) << "Workshop title:" << setw(20) << "Workshop date:" << setw(20) 
+			<< "Location:" << setw(20) << "Capacity:" << setw(20) 
+			<< "Instructor: " << endl;
+		cout << *this << endl;	// Overloaded output op
 		//return 1;
 		return;
 	}
@@ -240,7 +243,7 @@ ostream & operator << (ostream & cout, const workshop & op2)
 {
 	cout << static_cast<const event &>(op2);	// Call abc << op
 	// Output workshop members (capacity, instructor)
-	cout << left << setw(15) << op2.capacity << setw(15) << op2.instructor;
+	cout << left << setw(20) << op2.capacity << setw(20) << op2.instructor;
 	return cout;
 }
 // Convention subclass of event
@@ -273,10 +276,10 @@ int convention::add_event()
 	cout << "Enter location of convention: "; // Prompt for convention location
 	getline(cin, l);
 	//cin.ignore(100, '\n');
-	cout << "Enter convention admission price: ";	// Prompt for convention admission price
-	cin >> price;
 	cout << "Enter name of convention sponsor: ";	// Prompt for convention sponsor
 	getline(cin, company);
+	cout << "Enter convention admission price: ";	// Prompt for convention admission price
+	cin >> price;
 	//cin.ignore(100, '\n');
 	
 	// Update convention event (store)
@@ -309,7 +312,10 @@ void convention::display_event() const
 {
 	if(!title.empty())
 	{
-		cout << *this;
+		cout << left << setw(35) << "Convention title:" << setw(20) << "Convention date:" << setw(20) 
+			<< "Location:" << setw(20) << "Sponsor: " << setw(20) 
+			<< "Admission: " << endl;
+		cout << *this << endl;
 		//return 1;
 		return;
 	}
@@ -337,6 +343,6 @@ ostream & operator << (ostream & cout, const convention & op2)
 {
 	cout << static_cast<const event &>(op2);	// Call abc << op
 	// Output convention members (admission, sponsor)
-	cout << left << setw(15) << op2.admission << setw(15) << op2.sponsor;
+	cout << left << setw(20) << op2.sponsor << "$" << setw(20) << op2.admission;
 	return cout;
 }

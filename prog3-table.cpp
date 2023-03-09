@@ -149,6 +149,14 @@ int table::display_all(const unique_ptr<node> & root) const
 	count += display_all(root->get_right());
 	return count;
 } 
+// Function to remove all events in table (BST)
+bool table::remove_all() 
+{
+	if(!root)		// Check if table has any events
+		return false; 	// Already emtpy 
+	root.reset();		// Destroy the table
+	return true;
+}
 /*
 // Function to edit an event 
 //int table::edit() {}
@@ -160,8 +168,4 @@ int table::display_all(const unique_ptr<node> & root) const
 // Recursive function to remove event in the table (BST)
 //int table::remove() {}
 
-// Function to remove all events in table (BST)
-//int table::remove_all() {}
-// Recursive function to remove all events int he table (BST)
-//int table::remove_all() {}
 */
