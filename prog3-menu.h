@@ -1,5 +1,5 @@
 //prog3_menu.h
-#include "table.h"
+#include "prog3-table.h"
 
 // James Truong		CS302		3-8-2023
 // Program #3		Shedule Planner
@@ -12,9 +12,20 @@ displayed. */
 class menu	// Menu class interface
 {
 	public:
-		menu();			// Default constructor
-		~menu();		// Destructor 
-		int menu_interface();	// The client main menu interface
+		menu();			  // Default constructor
+		~menu();		  // Destructor 
+		int menu_interface();	  // The client main menu interface
+		void welcome_msg() const; // Display welcome message 
+		void exit_msg() const; 	  // Display exit message
+		// Functions
+		int valid_opt2(); 	  // Function to check for valid int select (0-2)
+		int valid_opt3();	  // Function to check for valid int select (0-3)
+		int valid_opt4();	  // Function to check for valid int select (0-4)
+		void main_menu() const;   // Display the schedule planner menu
+		void add_menu() const; 	  // Display the add event menu 
+		void delete_menu() const; // Display the delete event(s) menu 
+		void edit_menu() const;   // Display the edit event menu
+		void display_menu() const;// Display the display event menu
 	private:
 		// Variables
 		table my_table;		// Table to organize and store events for schedule (BST)
@@ -32,13 +43,4 @@ class menu	// Menu class interface
 		string a_topic;		// Topic name for meeting
 		string a_instructor;	// Instructor name for workshop
 		string a_sponsor;	// Sponsor name for convention
-
-		// Functions
-		int valid_opt(); 	// Function to check for valid int select
-		void welcome_msg() const; // Display welcome message 
-		void exit_msg() const; 	  // Display exit message
-		void main_menu() const;   // Display the schedule planner menu
-		void add_menu() const; 	  // Display the add event menu 
-		void edit_menu() const;   // Display the edit event menu
-		void display_menu() const;// Display the display event menu
-}
+};

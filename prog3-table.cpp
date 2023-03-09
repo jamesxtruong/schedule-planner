@@ -43,18 +43,31 @@ bool node::has_right() const
 	return right != nullptr;
 }
 // Greater than or equal to check
-bool greater_equal(const string & compare) const
+bool node::greater_equal(const string & compare) const
 {
-	if(compare.empty)	// Check for title to compare
-		throw invalid_argument("Event title missing.")
+	if(compare.empty())	// Check for title to compare
+		throw invalid_argument("Event title missing.");
 	return my_events.front()->get_title() >= compare;
 }
 // Less than check 
-bool less_than(const string & compare) const
+bool node::less_than(const string & compare) const
 {
-	if(compare.empty)
-		throw invalid_argument("Event title missing.")
+	if(compare.empty())
+		throw invalid_argument("Event title missing.");
 	return my_events.front()->get_title() < compare;
+}
+// Display the events stored in a node 
+int node::display_list() const
+{
+	int count = 0;		// Int count variable to track number of events (list may have more than one)
+	
+	// Display the list
+	for(const auto & ptr : my_events)
+	{
+		cout << *ptr << endl;
+		++count; 	// Increment count
+	}
+	return count; 		// Return the count
 }
 
 // Table (BST) class
@@ -63,9 +76,9 @@ table::table() : root(nullptr) {}
 // Destructor 
 table::~table() {}
 // Function to insert an event to the table (BST)
-int table::insert(unique_ptr<event> & ptr)
-{
-}
+//int table::insert(unique_ptr<event> & ptr)
+//{
+//}
 // Function to display an event in the table (BST)
 /*
 int table::display() const

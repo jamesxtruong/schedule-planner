@@ -14,12 +14,17 @@ workshop, convention)*/
 
 // Abstract base class
 // Default constructor
-//event::event() : title(""), date(""), location("") {}
-// Parameterized constructor 
-//event::event(const string & t, const string & d, const string & l) : 
-	//title(t), date(d), location(l) {}
+event::event() {}
+// Parameterized constructor to set members
+event::event(const string & t, const string & d, const string & l) : 
+	title(t), date(d), location(l) {}
 // Destructor
 event::~event() {}
+// Function to return the title/name of event
+string event::get_title() const
+{
+	return title;
+}
 // Overloaded output (display) for event title, date, location
 ostream & operator << (ostream & cout, const event & op2)
 {
@@ -30,17 +35,17 @@ ostream & operator << (ostream & cout, const event & op2)
 
 // Meeting subclass of event
 // Default constructor
-meeting::meeting() : title(""), date(""), location(""), topic("") {}
+meeting::meeting() : topic("") {}
 // Parameterized constructor
 meeting::meeting(const string & t, const string & d, const string & l, const string & a_topic) : 
-	/*event(t, d, l),*/ title(t), date(d), location(l), topic(a_topic) {}
+	event(t, d, l), /*title(t), date(d), location(l),*/ topic(a_topic) {}
 // Destructor
 meeting::~meeting() 
 {
-	title.clear();
+	/*title.clear();
 	date.clear();
 	location.clear();
-	topic.clear();
+	topic.clear();*/
 }
 // Add a meeting event
 int meeting::add_event() 
@@ -123,19 +128,19 @@ ostream & operator << (ostream & cout, const meeting & op2)
 
 // Workshop subclass of event
 // Default constructor
-workshop::workshop() : title(""), date(""), location(""), capacity(0), instructor("") {}
+workshop::workshop() : capacity(0), instructor("")  {}
 // Parameterized constructor
 workshop::workshop(const string & t, const string & d, const string & l, const int & cap, const string & a_instructor) :
-	/*event(t, d, l),*/ title(t), date(d), location(l), capacity(cap), 
+	event(t, d, l),/*title(t), date(d), location(l),*/ capacity(cap), 
 		instructor(a_instructor) {} 
 // Destructor
 workshop::~workshop() 
 {
-	title.clear();
+	/*title.clear();
 	date.clear();
 	location.clear();
+	instructor.clear();*/
 	capacity = 0;
-	instructor.clear();
 }
 // Add a workshop event
 int workshop::add_event()
@@ -238,19 +243,19 @@ ostream & operator << (ostream & cout, const workshop & op2)
 }
 // Convention subclass of event
 // Default constructor
-convention::convention() : title(""), date(""), location(""), admission(0.00), sponsor("") {}
+convention::convention() : admission(0.00), sponsor("") {}
 // Parameterized constructor 
 convention::convention(const string & t, const string & d, const string & l, const float & price, const string & company) :
-	/*event(t, d, l),*/ title(t), date(d), location(l), admission(price), 
+	event(t, d, l), /*title(t), date(d), location(l),*/admission(price), 
 		sponsor(company) {}
 // Destructor
 convention::~convention() 
 {
-	title.clear();
+	/*title.clear();
 	date.clear();
 	location.clear();
+	sponsor.clear();*/
 	admission = 0.00;
-	sponsor.clear();
 }
 // Add a convention event
 int convention::add_event()

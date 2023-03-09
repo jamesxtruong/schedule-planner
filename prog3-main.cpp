@@ -10,125 +10,20 @@ test the software through a menu interface of available options. */
 
 int main()
 {
-	//int choice = 0;		// Main menu choice variable (int option)
-	//int next_choice = 0;	// Next menu choice variable (int option)
-	//string search;		// String variable to store search
-	//table my_table;		// Table to organize events
-	//event * ptr;		// ABC pointer (testing)
+	int select = 0;		// Int menu interface select
+	menu my_menu;		// Menu interface object called my menu
 
-	cout << "Welcome to the Schedule Planner Program \n";
+	my_menu.welcome_msg();	 // Program welcome message call
+	
+	// Menu interface loop
 	do
 	{
-		cout << "Schedule Planner Menu: \n";
-		cout << "(1) Add Event \t\t (2) Edit Event \t (3) Delete Event \n";
-		cout << "(4) Display Event \t (0) Exit Program\n";
-		cout << "Select a menu option: ";
-		cin >> choice;
-		cin.ignore(100, '\n');
-		
-		if(choice == 1)
-		{
-			cout << "SELECTED: (1) Add Event ";
-			do
-			{
-				cout << "\nAdd Event Menu: \n";
-				cout << "(1) Add Meeting \t (2) Add Workshop \t (3) Add Convention\n";
-				cout << "(0) Back \t";
-				cout << "Select an option: ";
-				cin >> next_choice;
-				cin.ignore(100, '\n');
+		// Menu interface call
+		select = my_menu.menu_interface(); 
 
-				if(next_choice == 1)
-				{
-					cout << "SELECTED: (1) Add Meeting \n";
-					//meeting a_meeting;
-					//event * ptr = &a_meeting;
-					event * ptr = new meeting;
-					if(ptr->add_event())
-						ptr->display_event();
-					if(ptr)
-						delete ptr;
-					ptr = nullptr;
-				}
-				else if(next_choice == 2)
-				{
-					cout << "SELECTED: (2) Add Workshop \n";
-					//workshop a_workshop;
-					//event * ptr = &a_workshop;
-					event * ptr = new workshop;
-					if(ptr->add_event())
-						ptr->display_event();
-					if(ptr)
-						delete ptr;
-					ptr = nullptr;
-				}
-				else if(next_choice == 3)
-				{
-					cout << "SELECTED: (3) Add Convention \n";
-					//convention a_convention;
-					//event * ptr = &a_convention;
-					event * ptr =  new convention;
-					if(ptr->add_event())
-						ptr->display_event();
-					if(ptr)
-						delete ptr;
-					ptr = nullptr;
-					
-				}
-				else if(next_choice == 0)
-				{
-					cout << "SELECTED: (0) Back \n";
-				}
-			} while(next_choice != 0);
-		}
-		else if(choice == 2)
-		{
-			cout << "SELECTED: (2) Edit Event \n";
-			do
-			{
-				cout << "\nEdit Event Menu: \n";
-				cout << "(1) Edit A Meeting \t (2) Edit A Workshop \t (3) Edit A Convention\n";
-				cout << "(0) Back \t";
-				cout << "Select an option: ";
-				cin >> next_choice;
-				cin.ignore(100, '\n');
-
-			} while(next_choice != 0);
-		}
-		else if(choice == 3)
-		{
-			cout << "SELECTED: (3) Delete Event \n";
-			do
-			{
-				cout << "\nDelete Event Menu: \n";
-				cout << "(1) Delete An Event \t (2) Delete All \t (0) Back \n";
-				cout << "Select an option: ";
-				cin >> next_choice;
-				cin.ignore(100, '\n');
-
-			} while(next_choice != 0);
-		}
-		else if(choice == 4)
-		{
-			cout << "SELECTED: (4) Display Event \n";
-			do
-			{
-				cout << "\nDisplay Event Menu: \n";
-				cout << "(1) Display An Event \t (2) Display All \t (0) Back \n";
-				cout << "Select an option: ";
-				cin >> next_choice;
-				cin.ignore(100, '\n');
-				cout << "Enter event title to display: ";
-				getline(cin, search);
-
-			} while(next_choice != 0);
-		}
-		else if(choice == 0)
-		{
-			cout << "SELECTED: (0) Exit Program \n";
-		}
-	} while (choice != 0);
-
+	} while(select != 0); 	// 0 option interface select to exit
+	
+	my_menu.exit_msg();	// Menu exit message call
 
 	return 0;
 }

@@ -22,9 +22,9 @@ abstract base class such as the method for workshop to change capacity and instr
 class event 	// Abstract base class event, virtual self-similar interface methods
 {
 	public:
-		//event();						// Default constructor
-		// Parameterized constructor
-		//event(const string & t, const string & d, const string & l); 
+		event();						// Default constructor
+		// Parameterized constructor used to initialize protected variables
+		event(const string & t, const string & d, const string & l); 
 		virtual ~event();
 		virtual int add_event() = 0;				// Virtual method to call add an event
 		virtual int edit_event(const string & t) = 0;		// Virtual method to call edit an event
