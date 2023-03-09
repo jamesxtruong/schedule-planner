@@ -6,7 +6,10 @@
 // Program #3		Schedule Planner 
 
 /* This is the client test program where the application can 
-test the software through a menu interface of available options. */
+test the software through a menu interface of available options. 
+This program allows the user to create a schedule/planner to track 
+their events. Events include: meetings, workshops, and conventions.
+The interface will allow for insertion, removal, and display.*/
 
 int main()
 {

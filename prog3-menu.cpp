@@ -31,16 +31,42 @@ int menu::add_interface()
 
 			ptr = make_unique<meeting>();	// Upcast base class ptr to meeting
 			if(ptr->add_event())		// Call meeting method to add
+			{
+				cout << "\tADDED MEETING: \n";
 				ptr->display_event();	// Call meeting display method (echo)
+			}
 
-			my_table.insert(ptr);		// Insert meeting event to table (BST)
+			my_table.insert(ptr);	// Insert meeting event to table (BST)
+			/*{
+
+				try
+				{
+					// Insert meeting event to table (BST)
+					int insert = 
+					if(insert == 0)
+						throw invalid_argument("Failed to add event.");
+					else
+					{
+						cout << "Meeting that was added: \n";
+						ptr->display_event();
+					}
+				}
+				catch(const invalid_argument & err)
+				{
+					cerr << err.what() << endl; // Display error
+					continue;
+				}
+			} */
 		}
 		else if(select == 2)	// Add a workshop option
 		{
 			cout << "SELECTED: (2) Add Workshop \n";
 			ptr = make_unique<workshop>();	// Upcast base class ptr to workshop
 			if(ptr->add_event())		// Call workshop method to add
+			{
+				cout << "\tADDED WORKSHOP: \n";
 				ptr->display_event();	// Call workshop display method (echo)
+			}
 
 			my_table.insert(ptr);		// Insert workshop event to table (BST)
 		}
@@ -49,7 +75,10 @@ int menu::add_interface()
 			cout << "SELECTED: (3) Add Convention \n";
 			ptr = make_unique<convention>();// Upcast base class ptr to convention
 			if(ptr->add_event())		// Call convention method to add
+			{
+				cout << "\tADDED CONVENTION: \n";
 				ptr->display_event();	// Call convention display method (echo)
+			}
 
 			my_table.insert(ptr);		// Insert convention event to table (BST)	
 		}
@@ -69,8 +98,19 @@ int menu::edit_interface()
 	{
 		edit_menu();		// Display the edit event menu options
 		select = valid_opt3();	// Get valid event menu options (0-4)
-
-		/*if(select == 1)
+	/*	
+		if(select == 2) 	// Edit a workshop event to experience downcasting 
+		{
+			ptr = make_unique<workshop>();	// Upcast base class ptr to workshop
+			if(ptr->add_event())		// Call workshop method to add
+			{
+				cout << "\tADDED WORKSHOP: \n";
+				ptr->display_event();	// Call workshop display method (echo)
+			}
+			//unique_ptr<workshop> workshop_ptr = dynamic_cast<workshop*>(ptr.get()); 
+			my_table.insert(ptr);		// Insert workshop event to table (BST)
+		}
+		if(select == 1)	// Search needs to be implemented to downcast for workshop methods non-virtual
 		else if(select == 2)
 		else if(select == 3) */
 
@@ -103,8 +143,15 @@ int menu::delete_interface()
 				cerr << err.what() << endl;
 				continue;
 			}
+		}	
+		/*else if(select == 2)	// Remove a single event
+		{
+			cout << "\nSELECTED: (1) Remove an event \n";
+			cout << "Enter an event to search: ";
+			getline(cin, search);
+
 		}
-		/*else if(select == 2) */
+		*/
 
 	} while(select != 0);	// Loop until (0) is selected
 	return select;	// Return the exit option
@@ -136,7 +183,11 @@ int menu::display_interface()
 				continue;
 			}
 		}
-		//else if(select== 2)*/
+		/*else if(select== 2)
+			cout << "\nSELECTED: (1) Display an event: \n";
+			cout << "Enter an event to search for: ";
+			getline(cin, search);
+		*/
 
 	} while(next_choice != 0);
 	return select;
@@ -321,7 +372,7 @@ void menu::add_menu() const
 void menu::edit_menu() const
 {
 	cout << "\nEdit Event Menu: \n";
-	cout << "(1) Edit A Meeting \t (2) Edit A Workshop \t (3) Edit A Convention\n";
+	cout << "(_) Edit A Meeting \t (_ Edit A Workshop \t (_) Edit A Convention\n";
 	cout << "(0) Back \t";
 }
 // Function to dispaly delete event menu options 

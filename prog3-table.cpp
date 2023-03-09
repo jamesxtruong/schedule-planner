@@ -93,6 +93,30 @@ int node::insert_data(unique_ptr<event> & a_ptr)
 		//return 0;
 	return 1;
 }
+// Function to return the name/title of the event stored in the node (list)
+string node::get_data() const
+{
+	string temp;	// Temporary string to return
+	for(const auto & ptr : my_events)
+	{
+		temp = ptr->get_title();	
+	}
+	return temp;
+}
+// Function to return the pointer to the event 
+/*
+//event& & node::return_event(const string & title); // Search for event 
+unique_ptr<event> node::return_event(const string & title) // Search for event 
+{
+	for(auto & ptr: my_events) // Search the list in the node
+	{
+		if(ptr->get_title() == title)
+			return ptr;
+			//return *ptr; // Return reference to object
+	}
+	// No matching event title/name 
+	return nullptr;
+}*/
 // Table (BST) class
 // Default constructor
 table::table() : root(nullptr) {}
@@ -123,14 +147,31 @@ int table::insert(unique_ptr<node> & root, unique_ptr<event> & a_ptr)
 	else							// Greater or equal
 		return insert(root->get_right(), a_ptr); 
 }
-// Function to display an event in the table (BST)
-/*
-int table::display() const
+/*// Function to search for an event int he table (BST) and return the pointer/reference
+unique_ptr<event> table::find_event(const string & title)
 {
+	if(!root)
+		return nullptr;
+	
+}
+// Function to search for an event recursively 
+unique_ptr<event> table::find_event(const unique_ptr<node> & root, const string & title)
+{
+	if(!root)
+		return nullptr;
+} 
+// Function to display an event in the table (BST)
+
+int table::display(const string & title) const
+{
+	if(!root)
+		return 0;
 }
 // Recursive display single event 
-int table::display() const
+int table::display(const unique_ptr<node> & root, const string & title) const
 {
+	if(!root)
+		return 0;
 } */
 // Function to display all events in the table (BST) in order of sort (alphabet)
 int table::display_all() const
@@ -159,13 +200,46 @@ bool table::remove_all()
 }
 /*
 // Function to edit an event 
-//int table::edit() {}
+int table::edit(const string & title) 
+{
+	if(!root)		// Empty table return
+		return 0;
+	return edit(root, title);	// Recursive call
+}
 // Recursive function to traverse to find event to edit
-//int table::edit() {}
-
+int table::edit(unique_ptr<node> & root, const string & title) 
+{
+	if(!root)		// Base case, stop
+		return 0;
+	if(title < root->get_data())	// Title is less
+		return edit(root->get_left(), title);
+	else if(title > root->get_data()) // Title is greater
+		return edit(root->get_right(), title); 
+	else	// Found title
+	{
+		for(const auto & ptr : root->my_events)	// Iterate through the node list
+		{
+			if(ptr->get_data() == title)
+			{
+				ptr->edit_event();
+			}
+		}
+		return 1;
+	}
+}
 // Function to remove an event in the table (BST)
-//int table::remove() {}
+int table::remove(const string & title) 
+{
+	if(!root)
+		return 0;
+	return remove(root, title);
+}
 // Recursive function to remove event in the table (BST)
-//int table::remove() {}
+int table::remove(unique_ptr<node> & root, const string & title)
+{
+	if(!root)
+		return 0;
+	
+}
 
 */

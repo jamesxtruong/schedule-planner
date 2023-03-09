@@ -26,7 +26,7 @@ class node				// Tree node of events
 		int display_list() const;	// Display the events in a node
 		int insert_data(unique_ptr<event> & a_ptr); // Function to store data to node (base ptr)
 		string get_data() const; 	// Function to return title name of event
-		unique_ptr<event> & return_event(const string & title); // Search for event
+		//unique_ptr<event> return_event(const string & title); // Search for event
 	private:
 		//event * ptr;			// Raw pointer to base class
 		//unique_ptr<event> ptr;	// Single base class event pointer
@@ -43,19 +43,18 @@ class table				// Event tree
 		int insert(unique_ptr<event> & a_ptr);	// Insert an event 
 		//int display() const;		// Display an event
 		int display_all() const;	// Display all events in BST (wrapper)
-		//int edit(const event & find);	// Edit an event (search)
-		//int remove(const event & remove);// Remove an event
+		//int edit(const string & title);	// Edit an event (search)
+		//int remove(const string & title);// Remove an event
 		bool remove_all();		// Remove all events in schedule
-		unique_ptr<event> & find_event(const string & title);  // Search for event
+		//unique_ptr<event> find_event(const string & title);  // Search for event
 	private:
 		//node * root;			// Raw node pointer to root of BST
 		unique_ptr<node> root;
 		// Recursive insert
 		int insert(unique_ptr<node> & root, unique_ptr<event> & a_ptr);	
-		//int display(unique_ptr<node> root) const;		// Recursive display
-		int display_all(const unique_ptr<node> & root) const;	// Recursive display all
-		//int edit(const event & find, unique_ptr<node> & root);	// Recursive search
-		//int remove(const event & remove, unique_ptr<node> & root);	// Recursive remove
-		//int remove_all(unique_ptr<node> & root);		// Recursive remove all
+		//int display(unique_ptr<node> root, const string & title) const;		// Recursive display
+		int display_all(const unique_ptr<node> & root) const;		// Recursive display all
+		//int edit(unique_ptr<node> & root, const string & title);	// Recursive search
+		//int remove(unique_ptr<node> root, const string & title);	// Recursive remove
 };
 
